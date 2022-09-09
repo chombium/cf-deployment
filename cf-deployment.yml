@@ -87,6 +87,7 @@ addons:
         key: "((syslog_agent_metrics_tls.private_key))"
         server_name: syslog_agent_metrics
       drain_ca_cert: "((log_cache_syslog_tls.ca))"
+      drain_use_mtls: true
 
 - name: prom_scraper
   include:
@@ -1513,6 +1514,7 @@ instance_groups:
         cert: "((log_cache_syslog_server_metrics_tls.certificate))"
         key: "((log_cache_syslog_server_metrics_tls.private_key))"
         server_name: log_cache_syslog_server_metrics
+      syslog_client_ca_cert: "((loggregator_tls_agent.ca))"
   - name: route_registrar
     properties:
       nats:
